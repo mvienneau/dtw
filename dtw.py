@@ -20,7 +20,7 @@ def dtw(x, y, dist):
     D1 = D0[1:, 1:] # view
     for i in range(r):
         for j in range(c):
-            D1[i, j] = dist(x[i], y[j])
+            D1[i, j] = dist(array(x[i]).reshape(1,-1), array(y[j]).reshape(1,-1))
     C = D1.copy()
     for i in range(r):
         for j in range(c):
@@ -91,7 +91,7 @@ if __name__ == '__main__':
         x = [0, 0, 1, 1, 2, 4, 2, 1, 2, 0]
         y = [1, 1, 1, 2, 2, 2, 2, 3, 2, 0]
         dist_fun = manhattan_distances
-    elif 0: # 2-D numeric
+    elif 1: # 2-D numeric
         from sklearn.metrics.pairwise import euclidean_distances
         x = [[0, 0], [0, 1], [1, 1], [1, 2], [2, 2], [4, 3], [2, 3], [1, 1], [2, 2], [0, 1]]
         y = [[1, 0], [1, 1], [1, 1], [2, 1], [4, 3], [4, 3], [2, 3], [3, 1], [1, 2], [1, 0]]
